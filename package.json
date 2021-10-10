@@ -1,0 +1,20 @@
+{
+  "name": "cmkg_crawler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app.js"
+  },
+  "keywords": [
+    "knowledge graph"
+  ],
+  "author": "cosmo",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.22.0",
+    "koa": "^2.13.3",
+    "koa-router": "^10.1.1",
+    "mysql": "^2.18.1"
+  }
+}
