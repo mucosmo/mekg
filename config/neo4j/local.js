@@ -13,7 +13,7 @@ const session = driver.session()
 
 console.log(driver);
 
-let test = function async() {
+let test = async () => {
     try {
         const result = await session.writeTransaction(tx =>
             tx.run(
