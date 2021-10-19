@@ -1,9 +1,10 @@
 /*
- * @Author: mfuture@qq.com 
- * @Date: 2021-10-10 12:32:29 
- * @Last Modified by: mfuture@qq.com
- * @Last Modified time: 2021-10-10 13:19:12
+ * @Author: mfuture@qq.com
+ * @Date: 2021-10-10 12:32:28
+ * @Description: 连接mysql数据库本地服务器
+ * @FilePath: /jh_mekg_api/config/mysql/local.js
  */
+
 
 var mysql = require('mysql');
 

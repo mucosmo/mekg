@@ -2,7 +2,7 @@
  * @Author: mfuture@qq.com 
  * @Date: 2021-10-10 12:50:51 
  * @Last Modified by: mfuture@qq.com
- * @Last Modified time: 2021-10-10 22:38:34
+ * @Last Modified time: 2021-10-10 23:05:58
  */
 
 // 把从网页爬去的数据存储到数据库
@@ -36,7 +36,7 @@ module.exports = {
 
         await query('TRUNCATE table icd10_cn') // 先截断表
         await query(sql)
-        console.log('ICD-10 数据保存成功');
+        console.log('【ICD10_cn】数据保存成功');
     },
 
 

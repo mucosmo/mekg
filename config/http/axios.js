@@ -12,7 +12,7 @@ const url = require('./url')
 
 let instance = axios.create({
     method:"get", // 默认 get
-    baseURL: url.cmkg_baseurl,
+    baseURL: url.cmekg_baseurl,
     timeout: 5000,
     withCredentials: false,
     data: {},

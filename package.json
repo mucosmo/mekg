@@ -15,6 +15,8 @@
     "axios": "^0.22.0",
     "koa": "^2.13.3",
     "koa-router": "^10.1.1",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "neo4j-driver": "^4.3.4",
+    "neo4j-driver-lite": "^4.3.4"
   }
 }

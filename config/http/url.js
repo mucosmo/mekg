@@ -9,5 +9,5 @@
 
 
 module.exports = {
-    cmkg_baseurl: "https://zstp.pcl.ac.cn:8002"
+    cmekg_baseurl: "https://zstp.pcl.ac.cn:8002"
 }
