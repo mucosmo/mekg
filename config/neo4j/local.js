@@ -11,17 +11,12 @@ const driver = neo4j.driver('neo4j://localhost:7687', neo4j.auth.basic('neo4j', 
 
 const session = driver.session()
 
-console.log(driver);
-
-let test = async () => {
+let query = async (cql, params) => {
     try {
-        const result = await session.writeTransaction(tx =>
-            tx.run(
-                'CREATE (a:Greeting) SET a.message = $message RETURN a.message + ", from node " + id(a)', { message: 'hello, world' }
-            ))
-        const singleRecord = result.records[0]
-        const greeting = singleRecord.get(0)
-        console.log(greeting)
+        const result = await session.writeTransaction(tx => tx.run(cql, params))
+        return result.records
+    } catch (err) {
+        return err
     } finally {
         await session.close()
     }
@@ -29,6 +24,5 @@ let test = async () => {
     await driver.close()
 }
 
-test()
 
-module.exports = test
+module.exports = query

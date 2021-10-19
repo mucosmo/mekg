@@ -1,13 +1,10 @@
 /*
- * @Author: mfuture@qq.com 
- * @Date: 2021-10-12 09:08:45 
- * @Last Modified by: mfuture@qq.com
- * @Last Modified time: 2021-10-12 09:45:08
+ * @Author: mfuture@qq.com
+ * @Date: 2021-10-12 09:08:42
+ * @Description: 常用函数
+ * @FilePath: /jh_mekg_api/app/lib/common.js
  */
 
-
- 
-// 常用函数
 
 /**
 * @function 从树形数组创建树形对象

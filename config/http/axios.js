@@ -1,11 +1,10 @@
 /*
- * @Author: mfuture@qq.com 
- * @Date: 2021-10-10 12:08:18 
- * @Last Modified by: mfuture@qq.com
- * @Last Modified time: 2021-10-10 13:02:17
+ * @Author: mfuture@qq.com
+ * @Date: 2021-10-10 10:19:43
+ * @Description: 配置axios 请求体
+ * @FilePath: /jh_mekg_api/config/http/axios.js
  */
 
-// 配置axios 请求体
 
 const axios = require('axios');
 const url = require('./url')

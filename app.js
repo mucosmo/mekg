@@ -1,9 +1,10 @@
 /*
- * @Author: mfuture@qq.com 
- * @Date: 2021-10-10 12:07:18 
- * @Last Modified by: mfuture@qq.com
- * @Last Modified time: 2021-10-11 07:19:27
+ * @Author: mfuture@qq.com
+ * @Date: 2021-10-10 09:53:56
+ * @Description: koa框架入口文件
+ * @FilePath: /jh_mekg_api/app.js
  */
+
 
 'use strict';
 
@@ -12,13 +13,14 @@ const app = new Koa();
 const router = require('./app/router');
 
 
-const noe4j=require('./config/neo4j/local')
+const neo4j=require('./app/controller/neo4j.js')
 
-return 
 
 //crawler图谱知识爬取
-const crawler = require('./app/lib/request')
+const crawler = require('./app/controller/cmekg_crawler')
 crawler("药物")
+
+return
 
 //路由中间件
 app.use(async (ctx, next) => {

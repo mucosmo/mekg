@@ -1,16 +1,14 @@
 /*
- * @Author: mfuture@qq.com 
- * @Date: 2021-10-10 12:42:05 
- * @Last Modified by: mfuture@qq.com
- * @Last Modified time: 2021-10-11 00:30:43
+ * @Author: mfuture@qq.com
+ * @Date: 2021-10-10 12:42:01
+ * @Description: 本模块用于网络请求
+ * @FilePath: /jh_mekg_api/app/controller/request.js
  */
 
 
-// 本模块用于网络请求
-
 const axios = require('../../config/http/axios')
 
-const service = require('./dbService')
+const service = require('../service/cmekg')
 
 const query = require('../../config/mysql/local')
 
