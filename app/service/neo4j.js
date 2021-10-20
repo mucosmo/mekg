@@ -12,7 +12,7 @@ const query=require('../../config/neo4j/local.js')
 
 module.exports={
     addOne:async (cql,params)=>{
-        let result= await query(cql, params)
-        return result
+        let records= await query(cql, params)
+        return records
     }
 }

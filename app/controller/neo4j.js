@@ -19,4 +19,4 @@ let test=async ()=>{
     console.log(records[0].get(0))
 }
 
-// test()
+test()

@@ -13,7 +13,8 @@ var pool  = mysql.createPool({
     host: 'localhost',
     user: 'root',
     password: 'jh31415!',
-    database: 'medical_data',
+    // database: 'medical_data',
+    database: 'health39',
     port: '3306',
     charset: 'utf8mb4'
 });
