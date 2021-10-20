@@ -9,14 +9,16 @@
 let neo4j= require('../service/neo4j')
 
 
-const cql = 'CREATE (a:Greeting) SET a.message = $message RETURN a.message + ", from node " + id(a)'
-const params = { message: 'hello, neo4j' }
 
-
-let test=async ()=>{
+let test=async (cql,params)=>{
     let records=await neo4j.addOne(cql,params)
 
     console.log(records[0].get(0))
 }
 
-test()
+
+
+const cql = 'CREATE (a:Greeting) SET a.message = $message RETURN a.message + ", from node " + id(a)'
+const params = { message: 'hello, neo4j' }
+
+test(cql,params)

@@ -13,12 +13,20 @@ const app = new Koa();
 const router = require('./app/router');
 
 
-const neo4j=require('./app/controller/neo4j.js')
+// const neo4j=require('./app/controller/neo4j.js')
+
+const trans = require('./app/controller/trans')
 
 
-//crawler图谱知识爬取
-const crawler = require('./app/controller/cmekg_crawler')
-crawler("药物")
+ trans('fuke')
+
+
+
+
+
+// //crawler图谱知识爬取
+// const crawler = require('./app/controller/cmekg_crawler')
+// crawler("药物")
 
 return
 

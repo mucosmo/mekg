@@ -9,7 +9,7 @@ const neo4j = require('neo4j-driver-lite')
 
 const driver = neo4j.driver('bolt://localhost:7687', neo4j.auth.basic('neo4j', 'cosmo'))
 
-const session = driver.session()
+const session = driver.session({ 'database': 'neo4j' })
 
 let query = async (cql, params) => {
     try {
