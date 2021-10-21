@@ -25,7 +25,7 @@ const trans = require('./app/controller/trans')
 
 
 // //crawler图谱知识爬取
-// const crawler = require('./app/controller/cmekg_crawler')
+// const crawler = require('./app/controller/cmekgCrawler')
 // crawler("药物")
 
 return
