@@ -19,11 +19,15 @@ const baseURL = 'https://fanyi-api.baidu.com/api/trans/vip/translate'
 module.exports = {
 
     // 翻译
-    trans: async (txt, from, to) => {
+    trans: async (txt, from, to,proxy) => {
 
         return new Promise((resolve, reject) => {
             axios({
                 baseURL: baseURL,
+                // proxy: {
+                //     host: proxy.ip,     
+                //     port: proxy.port   
+                //     },
                 params: {
                     q: txt,
                     from: from,
@@ -44,7 +48,7 @@ module.exports = {
     // 选择疾病
     selectDisease: async (department = null) => {
 
-        let sql= `select id, \`name\` from disease where department = \'${department}\'`
+        let sql= `select id, \`name\` from disease where name_eng is null`
         //  sql = `select id, chinese_name from department`
 
         results = await query(sql)
