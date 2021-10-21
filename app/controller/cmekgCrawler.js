@@ -2,7 +2,6 @@
  * @Author: mfuture@qq.com
  * @Date: 2021-10-10 12:42:01
  * @Description: 本模块用于网络请求
- * @FilePath: /jh_mekg_api/app/controller/request.js
  */
 
 

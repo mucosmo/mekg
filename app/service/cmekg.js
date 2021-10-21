@@ -2,7 +2,6 @@
  * @Author: mfuture@qq.com
  * @Date: 2021-10-10 12:50:20
  * @Description: 把从网页爬去的数据存储到数据库
- * @FilePath: /jh_mekg_api/app/service/dbService.js
  */
 
 

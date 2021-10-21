@@ -4,7 +4,6 @@
  * @LastEditTime: 2021-10-12 10:42:26
  * @LastEditors: mfuture@qq.com
  * @Description: 中文医学知识图谱数据接口
- * @FilePath: /cmekg_api/app/router/cmekg.js
  */
 
 const Router = require('koa-router');

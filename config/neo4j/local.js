@@ -2,7 +2,6 @@
  * @Author: mfuture@qq.com
  * @Date: 2021-10-19 14:37:31
  * @Description: 连接图数据库neo4j本地服务器
- * @FilePath: /jh_mekg_api/config/neo4j/local.js
  */
 
 const neo4j = require('neo4j-driver-lite')

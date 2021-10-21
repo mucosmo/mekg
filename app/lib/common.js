@@ -2,7 +2,6 @@
  * @Author: mfuture@qq.com
  * @Date: 2021-10-12 09:08:42
  * @Description: 常用函数
- * @FilePath: /jh_mekg_api/app/lib/common.js
  */
 
 

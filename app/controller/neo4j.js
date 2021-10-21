@@ -2,7 +2,6 @@
  * @Author: mfuture@qq.com
  * @Date: 2021-10-19 17:46:26
  * @Description: neo4j 测试
- * @FilePath: /jh_mekg_api/app/controller/neo4j.js
  */
 
 

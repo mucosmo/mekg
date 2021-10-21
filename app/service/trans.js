@@ -2,7 +2,6 @@
  * @Author: mfuture@qq.com
  * @Date: 2021-10-20 21:41:29
  * @Description: 百度翻译api
- * @FilePath: /jh_mekg_api/app/service/trans.js
  */
 
 const md5 = require('md5')

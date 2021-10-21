@@ -2,7 +2,6 @@
  * @Author: mfuture@qq.com
  * @Date: 2021-10-10 09:53:56
  * @Description: koa框架入口文件
- * @FilePath: /jh_mekg_api/app.js
  */
 
 

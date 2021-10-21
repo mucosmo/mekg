@@ -2,7 +2,6 @@
  * @Author: mfuture@qq.com
  * @Date: 2021-10-10 12:32:28
  * @Description: 连接mysql数据库本地服务器
- * @FilePath: /jh_mekg_api/config/mysql/local.js
  */
 
 

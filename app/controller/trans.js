@@ -2,7 +2,6 @@
  * @Author: mfuture@qq.com
  * @Date: 2021-10-20 21:42:17
  * @Description: 百度翻译
- * @FilePath: /jh_mekg_api/app/controller/trans.js
  */
 
 const service = require('../service/trans')
