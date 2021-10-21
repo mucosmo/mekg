@@ -6,10 +6,17 @@
 
 const service = require('../service/trans')
 
-trans = async (department = null) => {
+const IP_PROXY=[
+    {ip:'124.70.46.14',port:'3128'},
+    {ip:'182.84.144.218',port:'3256'},
+    {ip:'220.181.111.37',port:'80'},
+    {ip:'101.133.152.90',port:'7788'}
+]
+
+trans = async () => {
 
 
-    diseases = await service.selectDisease(department)
+    diseases = await service.selectDisease()
 
     for (let [index, item] of diseases.entries()) {
 
@@ -21,7 +28,9 @@ trans = async (department = null) => {
 
             console.log(chinese_name)
 
-            service.trans(chinese_name, 'zh', 'en').then(async res => {
+            proxy=IP_PROXY[index % IP_PROXY.length]
+ 
+            service.trans(chinese_name, 'zh', 'en',proxy).then(async res => {
 
                 trans_result = res.data.trans_result
 
@@ -35,7 +44,7 @@ trans = async (department = null) => {
             }).catch(err => {
                 console.error(err)
             })
-        }, index * 1500); 
+        }, index * 1500); // 标准免费版 QPS=1 
 
     }
 
