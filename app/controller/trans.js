@@ -16,8 +16,13 @@ trans = async (department = null) => {
 
         setTimeout(() => {
             console.log('---------------------------------')
-            console.log(item.name)
-            service.trans(item.name, 'zh', 'en').then(async res => {
+             
+            let chinese_name=item.name
+            // chinese_name=item.chinese_name
+
+            console.log(chinese_name)
+
+            service.trans(chinese_name, 'zh', 'en').then(async res => {
 
                 trans_result = res.data.trans_result
 
@@ -31,7 +36,7 @@ trans = async (department = null) => {
             }).catch(err => {
                 console.error(err)
             })
-        }, index * 1500); // 是网络状态而定，15足矣
+        }, index * 1500); 
 
     }
 
