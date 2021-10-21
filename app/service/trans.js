@@ -9,8 +9,10 @@ const md5 = require('md5')
 const axios = require('../../config/http/axios')
 const query = require('../../config/mysql/local')
 
-const appid = '20190911000333757'
-const key = 'LK3pBIW7x4ZFZD_Z_c7n'
+const secretConstants=require('../../config/secretConstants.js')
+
+const appid = secretConstants.BAIDU_TRANS_API_APPID
+const key = secretConstants.BAIDU_TRANS_API_KEY
 const salt = 'sasq34rtgds'
 const baseURL = 'https://fanyi-api.baidu.com/api/trans/vip/translate'
 
@@ -43,7 +45,8 @@ module.exports = {
     // 选择疾病
     selectDisease: async (department = null) => {
 
-        let sql= `select id, \`name\` from disease where department = '${department}'`
+        let sql= `select id, \`name\` from disease where department = \'${department}\'`
+        //  sql = `select id, chinese_name from department`
 
         results = await query(sql)
 
@@ -55,7 +58,11 @@ module.exports = {
     // 更新英文名
     updateDiseaseTrans: async (id = -1, engTrans = null) => {
 
-        await query(`update disease set name_eng= "${engTrans}" where id = ${id} `)
+        let sql=`update disease set name_eng= \"${engTrans}\" where id = ${id} ` 
+
+        //  sql = `update department set english_name="${engTrans}" where id = ${id}`
+
+        await query(sql)
 
     }
 
