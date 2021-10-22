@@ -6,6 +6,7 @@
 
 const service = require('../service/trans')
 
+
 const IP_PROXY=[
     {ip:'124.70.46.14',port:'3128'},
     {ip:'182.84.144.218',port:'3256'},
@@ -49,7 +50,7 @@ trans = async () => {
     }
 
 }
-
+ 
 
 
 

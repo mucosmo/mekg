@@ -12,20 +12,19 @@ const app = new Koa();
 const router = require('./app/router');
 
 
-// const neo4j=require('./app/controller/neo4j.js')
-
-const trans = require('./app/controller/trans')
-
-
- trans('fuke')
+// arangodb 数据库
+const adb=require('./app/controller/arangodb')
+adb.createDiseaseCol('disease')
 
 
+// 百度接口翻译英文名词
+// require('./app/controller/trans')();
 
 
+// crawler图谱知识爬取
+// require('./app/controller/cmekgCrawler')("药物")
 
-// //crawler图谱知识爬取
-// const crawler = require('./app/controller/cmekgCrawler')
-// crawler("药物")
+
 
 return
 

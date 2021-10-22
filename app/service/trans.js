@@ -8,10 +8,12 @@ const md5 = require('md5')
 const axios = require('../../config/http/axios')
 const query = require('../../config/mysql/local')
 
+
 const secretConstants=require('../../config/secretConstants.js')
 
-const appid = secretConstants.BAIDU_TRANS_API_APPID
-const key = secretConstants.BAIDU_TRANS_API_KEY
+const appid = secretConstants.BAIDU_TRANS_API.APPID
+const key = secretConstants.BAIDU_TRANS_API.KEY
+
 const salt = 'sasq34rtgds'
 const baseURL = 'https://fanyi-api.baidu.com/api/trans/vip/translate'
 
@@ -48,12 +50,14 @@ module.exports = {
     // 选择疾病
     selectDisease: async (department = null) => {
 
-        let sql= `select id, \`name\` from disease where name_eng is null`
+        let sql= `select id, \`name\` from disease where name_eng is null;`
         //  sql = `select id, chinese_name from department`
+        
 
         results = await query(sql)
 
         return results
+
 
     },
 
