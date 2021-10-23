@@ -14,7 +14,7 @@ const router = require('./app/router');
 
 // arangodb 数据库
 const adb=require('./app/controller/arangodb')
-adb.createDiseaseCol('disease')
+adb.createCol('disease')
 
 
 // 百度接口翻译英文名词
