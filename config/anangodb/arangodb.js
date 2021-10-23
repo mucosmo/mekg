@@ -1,7 +1,7 @@
 /*
  * @Author: mfuture@qq.com
  * @Date: 2021-10-22 12:26:30
- * @Description: arangodb服务器，不同的en
+ * @Description: 在不同的env下构造arangodb的 database 并输出
  */
 
 const { Database } = require("arangojs");

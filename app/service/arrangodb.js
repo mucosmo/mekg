@@ -6,7 +6,7 @@
 
 const { aql } = require("arangojs");
 
-const db = require('../../config/anangodb/env')('dev')
+const db = require('../../config/anangodb/arangodb')('dev')
 
 const query = require('../../config/mysql/local')
 
