@@ -13,10 +13,10 @@ module.exports = {
 
 
     // 在arangodb中创建疾病集合
-    createCol: async (colName) => {
+    createCol: async (colName,department) => {
 
 
-        let disease = await service.selectDisease('fuke')
+        let disease = await service.selectDisease(department)
 
 
         await service.createCollection(colName, disease)
