@@ -6,7 +6,7 @@
 
 const { aql } = require("arangojs");
 
-const db = require('../../config/anangodb/arangodb')('dev')
+let db = require('../../config/anangodb/arangodb')
 
 const query = require('../../config/mysql/local')
 
@@ -25,16 +25,26 @@ module.exports = {
             FROM disease as a 
             LEFT JOIN department as b 
             ON a.department=b.pinyin 
-            WHERE department='${department}' `
+            WHERE department='${department}' limit 1`
 
         results = await query(sql)
+
+
+        for(let [index,item] of results.entries()){
+
+            console.log(item)
+
+             
+        }
 
         return results
 
     },
 
     // 创建集合
-    createCollection: async (colName, data) => {
+    createCollection: async (env,colName, data) => {
+
+         db=db(env)
 
         let col = db.collection(colName);
 
@@ -44,6 +54,8 @@ module.exports = {
         for (let [index, item] of data.entries()) {
 
             console.log(item.name)
+            console.log(typeof item.identify)
+            item.identify=JSON.parse(item.identify).join('\r\n')
             await col.save(item)
         }
 

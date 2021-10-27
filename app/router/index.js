@@ -10,6 +10,7 @@
 const Router = require('koa-router');
 const user = require('./user');
 const cmekg = require('./cmekg');
+const mtdd = require('./mtdd');
 
 const router = new Router();
 
@@ -21,5 +22,6 @@ router.get('/', async (ctx) => {
 
 router.use('/user', user.routes(), user.allowedMethods());
 router.use('/cmekg', cmekg.routes(), cmekg.allowedMethods());
+router.use('/mtdd', mtdd.routes(), mtdd.allowedMethods());
 
 module.exports = router;

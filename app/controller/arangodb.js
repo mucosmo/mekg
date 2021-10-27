@@ -5,7 +5,7 @@
  */
 
 
-const service = require('../service/arrangodb')
+const service = require('../service/arangodb')
 
 
 
@@ -13,16 +13,31 @@ module.exports = {
 
 
     // 在arangodb中创建疾病集合
-    createCol: async (colName,department) => {
+    createCol: async (env,colName,department) => {
 
 
         let disease = await service.selectDisease(department)
 
 
-        await service.createCollection(colName, disease)
+        await service.createCollection(env,colName, disease)
 
 
 
     },
+
+        // 在arangodb中创建cmekg知识图谱
+        createCmekg: async (env,colName,department) => {
+
+
+            let disease = await service.selectDisease(department)
+    
+    
+            await service.createCollection(env,colName, disease)
+    
+    
+    
+        },
+
+
 
 }
