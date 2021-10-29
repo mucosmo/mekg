@@ -113,6 +113,8 @@ let addKG = async (label, fix = true) => {
     }
 }
 
+
+
 /**
 * @decsription 针对cmekg的爬虫
 * @param label {String} 【常见病、科室、ICD10、药物、症状、诊疗]之一

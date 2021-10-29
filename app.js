@@ -12,12 +12,11 @@ const app = new Koa();
 const router = require('./app/router');
 
 
-
 // arangodb 数据库
 const adb=require('./app/controller/arangodb')
 // adb.createCol('dev','disease','fuke')
 
-adb.createCmekg('dev')
+// adb.createCmekg('dev')
 
 
 // 百度接口翻译英文名词
@@ -25,8 +24,13 @@ adb.createCmekg('dev')
 
 
 // crawler图谱知识爬取
-// const kg=require('./app/controller/cmekgCrawler')
+// const kg=require('./app/controller/cmekg')
 // kg("icd10")
+
+// 对cmekg原始数据进一步加工
+const cmekgProcess=require('./app/controller/dataProcess/cmekgProcess')
+cmekgProcess()
+
 
 return
 

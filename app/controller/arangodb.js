@@ -31,8 +31,10 @@ module.exports = {
         let verticesFrom = [], verticesTo = []
         verticesFrom.push(vertexColName)
         verticesTo.push(vertexColName)
-
         let [vertices, edges] = parseVertexEdge(result, vertexColName)
+
+        return
+
         await service.createCollection(env, vertexColName, vertices)
 
         // 初始化边合集
@@ -47,6 +49,7 @@ module.exports = {
         await service.queryGraph(env,graph)
 
     },
+
 
 
 }
