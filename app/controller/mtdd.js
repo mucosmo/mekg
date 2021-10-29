@@ -11,8 +11,6 @@ const fs=require('fs')
 
 const path=require('path')
 
-require('../../data/mysql.json')
-
 // // fs读取文件时路径设置官方推荐 https://nodejs.org/api/fs.html
 // console.log(path.resolve(__dirname,'../data/mysql.json'))
 
@@ -27,12 +25,17 @@ module.exports={
 
     selectMydata: async(ctx)=>{
 
-        let sql='select * from department;'
+        let sql=`select a.id,a.name_eng as \`name\` ,a.\`name\` as chinese_name, a.icd11_code as \`code\`,  a.introduction as intro,a.infective,a.alias,
+        b.english_name as category,b.chinese_name as category_chinese_name,a.prevention as prevent,a.common_treat as treat,a.identify,
+        a.create_time as create_timestamp,a.update_time as update_timestamp
+         from disease a left join department b on a.department=b.pinyin where department="fuke" limit 10;`
     
         const result=await query(sql)
+
+        // console.log(JSON.parse(result))
     
-        // fs.writeFileSync(\'../../data/mysql.json',JSON.stringify(result))  错误
-        // fs.writeFileSync(path.resolve(__dirname,'../../data/mysql.json'),JSON.stringify(result))
+        // // fs.writeFileSync(\'../../data/mysql.json',JSON.stringify(result))  错误
+        fs.writeFileSync(path.resolve(__dirname,'../../data/mysql.json'),JSON.stringify(result))
 
         ctx.body=result
     

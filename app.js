@@ -14,8 +14,10 @@ const router = require('./app/router');
 
 
 // arangodb 数据库
-// const adb=require('./app/controller/arangodb')
+const adb=require('./app/controller/arangodb')
 // adb.createCol('dev','disease','fuke')
+
+adb.createCmekg('dev')
 
 
 // 百度接口翻译英文名词
@@ -24,6 +26,8 @@ const router = require('./app/router');
 
 // crawler图谱知识爬取
 // require('./app/controller/cmekgCrawler')("药物")
+
+return
 
 
 //路由中间件
