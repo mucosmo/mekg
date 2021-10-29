@@ -25,7 +25,8 @@ adb.createCmekg('dev')
 
 
 // crawler图谱知识爬取
-// require('./app/controller/cmekgCrawler')("药物")
+// const kg=require('./app/controller/cmekgCrawler')
+// kg("icd10")
 
 return
 

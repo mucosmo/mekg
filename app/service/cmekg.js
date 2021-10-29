@@ -30,7 +30,7 @@ module.exports = {
 
         });
 
-        const sql = `insert into icd10_cn values ${values.join(',')}`
+        const sql = `insert into icd10_cn(id,\`code\`,pId,\`name\`,icon) values ${values.join(',')}`
 
         await query('TRUNCATE table icd10_cn') // 先截断表
         await query(sql)
@@ -45,7 +45,7 @@ module.exports = {
         data.nodes.forEach((ele, idx) => {
             values.push(`(${ele.id},${ele.pId},'${ele.name}','${ele.icon}')`)
         });
-        const sql = `insert into ${data.config.table} values ${values.join(',')}`
+        const sql = `insert into ${data.config.table}(id,pId,\`name\`,icon) values ${values.join(',')}`
         await query(`TRUNCATE table ${data.config.table}`) // 先截断表
         await query(sql)
         console.log(`【${data.config.tree_type}】数据保存成功`);
@@ -55,7 +55,7 @@ module.exports = {
     // 添加知识图谱
     addKG: async data => {
 
-        const sql = `insert into ${data.config.table_kg} values(?,?,?,?,?,?)`
+        const sql = `insert into ${data.config.table_kg}(id,\`name\`,tree_type,categories,link,node) values(?,?,?,?,?,?)`
 
         await query(sql, [data.id, `${data.name}`, `${data.tree_type}`, JSON.stringify(data.categories), JSON.stringify(data.link), JSON.stringify(data.node)])
 

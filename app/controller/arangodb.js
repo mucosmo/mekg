@@ -23,7 +23,7 @@ module.exports = {
     createCmekg: async (env) => {
 
         // mysql获取原始节点数据
-        nodeName = '视野缺损'
+        nodeName = '唇腭裂'
         let result = await service.selectNode(nodeName)
 
         // 初始化定点合集

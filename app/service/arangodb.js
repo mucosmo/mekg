@@ -36,7 +36,7 @@ module.exports = {
     // 选择cmekg节点
     selectNode: async (nodeName) => {
 
-        let sql = `select * from icd10_cn_kg where \`name\`='${nodeName}' limit 5;`
+        let sql = `select * from icd10_cn_kg where \`name\`='${nodeName}' limit 1;`
 
         result = await query(sql)
 
@@ -103,8 +103,6 @@ module.exports = {
         let info = await graph.get()
 
         // console.log(info)
-
-        console.log('人生的其中一种活法！')
 
         const db = arangodb(env)
 

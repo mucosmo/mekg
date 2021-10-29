@@ -129,7 +129,7 @@ let crawler = async (label, refresh = false, fix = true) => {
                 await getList(label)
             }
         }
-        addKG(label, fix)
+        await addKG(label, fix)
     } catch (error) {
         console.error(error);
     }
