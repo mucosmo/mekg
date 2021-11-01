@@ -38,7 +38,13 @@ module.exports = {
 
         let sql = `select * from icd10_cn_kg where \`name\`='${nodeName}' limit 1;`
 
+         sql = `select * from icd10_cn_kg;`
+
+
+
+
         result = await query(sql)
+
 
         fs.writeFileSync(path.resolve(__dirname, '../../data/mysql.json'), JSON.stringify(result))
 
@@ -54,7 +60,7 @@ module.exports = {
 
         let col = db.collection(colName);
 
-        await col.exists() ? await col.truncate() : type ? await col.create({ type: type }) : await col.create()
+        // await col.exists() ? await col.truncate() : type ? await col.create({ type: type }) : await col.create()
 
         await col.saveAll(data)
 

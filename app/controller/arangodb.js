@@ -8,14 +8,22 @@
 const arangodb = require('../../config/anangodb/arangodb')
 const service = require('../service/arangodb')
 
+const query=require('../../config/mysql/local')
+
 
 module.exports = {
 
     // 在arangodb中创建疾病集合
     createCol: async (env, colName, department) => {
 
-        let disease = await service.selectDisease(department)
-        await service.createCollection(env, colName, disease)
+        // let disease = await service.selectDisease(department)
+        // await service.createCollection(env, colName, disease)
+
+
+        let data=await query('select * from department;')
+
+        await service.createCollection(env,colName,data)
+
 
     },
 
@@ -33,20 +41,20 @@ module.exports = {
         verticesTo.push(vertexColName)
         let [vertices, edges] = parseVertexEdge(result, vertexColName)
 
-        return
-
         await service.createCollection(env, vertexColName, vertices)
 
         // 初始化边合集
         const edgeColName = "cmekg_edges"
+
         const edgeCollection = await service.createCollection(env, edgeColName, edges, 3)
 
-        // 创建图
-        const graphName = 'cmekg'
-        const graph = await service.createGraph(env, graphName, edgeCollection, verticesFrom, verticesTo)
+        // // 创建图
+        // const graphName = 'cmekg'
 
-        // 查询图
-        await service.queryGraph(env,graph)
+        // const graph = await service.createGraph(env, graphName, edgeCollection, verticesFrom, verticesTo)
+
+        // // 查询图
+        // await service.queryGraph(env,graph)
 
     },
 
@@ -64,20 +72,20 @@ parseVertexEdge = (data, vertexColName) => {
 
     for (let item of data) {
         // 自定义_key必须是显示字符串
-        item.node = item.node.map(x => {
+        item.node_arangodb = item.node_arangodb.map(x => {
             x._key = String(x.name)
             return x
         })
-        vertices = vertices.concat(item.node)
+        vertices = vertices.concat(item.node_arangodb)
     }
 
     for (let item of data) {
-        item.link = item.link.map(x => {
-            x._from = vertexColName + '/' + x.source
-            x._to = vertexColName + '/' + x.target
+        item.link_arangodb = item.link_arangodb.map(x => {
+            x._from = vertexColName + '/' + x._from
+            x._to = vertexColName + '/' + x._to
             return x
         })
-        edges = edges.concat(item.link)
+        edges = edges.concat(item.link_arangodb)
     }
 
     return [vertices, edges]
