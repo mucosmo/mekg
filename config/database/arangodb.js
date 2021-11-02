@@ -6,12 +6,12 @@
 
 const { Database } = require("arangojs");
 
-const secretConstants=require('../secretConstants.js')
+const constants=require('../constants.js')
 
 
 module.exports=arangodb=(env=null)=>{
 
-    const config=secretConstants.ARANGODB[env]
+    const config=constants.ARANGODB[env]
 
     const db = new Database({
         url: config.url,

@@ -5,7 +5,7 @@
  */
 
 
-const query=require('../../config/neo4j/local.js')
+const query=require('../../config/database/neo4j.js')
 
 
 

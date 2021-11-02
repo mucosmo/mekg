@@ -10,15 +10,15 @@
 const Koa = require('koa');
 const app = new Koa();
 const router = require('./app/router');
-const process=require('process')
+// const process=require('process')
 
 
 // arangodb 数据库
 const adb=require('./app/controller/arangodb')
-// adb.createCol('dev','disease','fuke')
+// adb.createCol(process.env.NODE_ENV,'disease','fuke')
 
 
-adb.createCmekg('dev')
+adb.createCmekg(process.env.NODE_ENV)
 
 
 // 百度接口翻译英文名词
@@ -31,14 +31,14 @@ adb.createCmekg('dev')
 
 // 对cmekg原始数据进一步加工
 const cmekgProcess=require('./app/controller/dataProcess/cmekgProcess')
-// cmekgProcess()
+// cmekgProcess(process.env.NODE_ENV,'medical_data')
 
 
 process.on('uncaughtException', function (err) {
     //打印出错误
     console.log(err);
     //打印出错误的调用栈方便调试
-    console.log(err.stack)
+    // console.log(err.stack)
 
     process.exit(1)
 });

@@ -5,10 +5,12 @@
  */
 
 
-const arangodb = require('../../config/anangodb/arangodb')
+const arangodb = require('../../config/database/arangodb')
 const service = require('../service/arangodb')
 
-const query=require('../../config/mysql/local')
+const query = require('../../config/database/mysql')
+
+const mongoClient = require('../../config/database/mongodb')(process.env.NODE_ENV)
 
 
 module.exports = {
@@ -20,9 +22,9 @@ module.exports = {
         // await service.createCollection(env, colName, disease)
 
 
-        let data=await query('select * from department;')
+        let data = await query('select * from department;')
 
-        await service.createCollection(env,colName,data)
+        await service.createCollection(env, colName, data)
 
 
     },
@@ -30,23 +32,41 @@ module.exports = {
     // 在arangodb中创建cmekg知识图谱
     createCmekg: async (env) => {
 
+
+        return
+
         // mysql获取原始节点数据
-        nodeName = '唇腭裂'
-        let result = await service.selectNode(nodeName)
+        dbName = 'cmekg'  
 
-        // 初始化定点合集
-        let vertexColName = "cmekg_vertices"
-        let verticesFrom = [], verticesTo = []
-        verticesFrom.push(vertexColName)
-        verticesTo.push(vertexColName)
-        let [vertices, edges] = parseVertexEdge(result, vertexColName)
+        let db = mongoClient.db(dbName)
 
-        await service.createCollection(env, vertexColName, vertices)
+        const collections = await db.listCollections({ name: { $regex: /kg_/ } }).toArray()
 
-        // 初始化边合集
-        const edgeColName = "cmekg_edges"
+        for (let collection of collections) {
+            collectionName = collection.name
+            let result = await service.selectNode(dbName, collectionName)
+            // 初始化定点合集
+            let vertexColName = "cmekg_vertices"
+            let verticesFrom = [], verticesTo = []
+            verticesFrom.push(vertexColName)
+            verticesTo.push(vertexColName)
+            let [vertices, edges] = parseVertexEdge(result, vertexColName)
 
-        const edgeCollection = await service.createCollection(env, edgeColName, edges, 3)
+            console.log('here it is--')
+
+            await service.createCollection(env, vertexColName, vertices)
+
+            // 初始化边合集
+            const edgeColName = "cmekg_edges"
+
+            const edgeCollection = await service.createCollection(env, edgeColName, edges, 3)
+
+        }
+
+
+        return
+
+
 
         // // 创建图
         // const graphName = 'cmekg'

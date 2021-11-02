@@ -4,7 +4,7 @@
  * @Description: 代理ip
  */
 
-const query = require('../../config/mysql/local')
+const query = require('../../config/database/mysql')
 
 
 module.exports = selectProxy = async () => {

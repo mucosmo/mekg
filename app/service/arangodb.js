@@ -10,9 +10,11 @@ const fs = require('fs')
 
 const path = require('path')
 
-let arangodb = require('../../config/anangodb/arangodb')
+let arangodb = require('../../config/database/arangodb')
 
-const query = require('../../config/mysql/local')
+const query = require('../../config/database/mysql')
+
+const mongoClient = require('../../config/database/mongodb')
 
 
 
@@ -33,23 +35,34 @@ module.exports = {
 
     },
 
-    // 选择cmekg节点
-    selectNode: async (nodeName) => {
+    // 从mongodb中选择cmekg节点
+    selectNode: async (dbName, collectionName) => {
 
-        let sql = `select * from icd10_cn_kg where \`name\`='${nodeName}' limit 1;`
+        let client = mongoClient(process.env.NODE_ENV)
 
-         sql = `select * from icd10_cn_kg;`
+        let db = client.db(dbName)
+
+        let collection = db.collection(collectionName)
+
+        let countDocument = await collection.countDocuments()
+
+        let step = 1000
+
+        let patch = [], finalResult = []
 
 
+        for (let i = 0; i < Math.ceil(countDocument / step); ++i) {
+            patch = await collection.find().limit(step).skip(step * i).toArray()
+             console.log(i)
+            finalResult = finalResult.concat(patch)
+        }
 
 
-        result = await query(sql)
+        client.close()
 
+        // fs.writeFileSync(path.resolve(__dirname, '../../data/mysql.json'), JSON.stringify(finalResult.slice(2,40)))
 
-        fs.writeFileSync(path.resolve(__dirname, '../../data/mysql.json'), JSON.stringify(result))
-
-
-        return result
+        return finalResult
 
     },
 

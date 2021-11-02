@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "dev": "nodemon app.js --ignore 'data'"
+    "dev": "NODE_ENV=dev nodemon app.js  --ignore 'data'",
+    "start": "NODE_ENV=prod nodemon app.js  --ignore 'data'"
   },
   "keywords": [
     "knowledge graph"

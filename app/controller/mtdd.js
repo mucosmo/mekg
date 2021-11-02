@@ -5,7 +5,7 @@
  */
 
 
-const query=require('../../config/mysql/local')
+const query=require('../../config/database/mysql')
 
 const fs=require('fs')
 

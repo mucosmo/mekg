@@ -9,7 +9,7 @@ const axios = require('../../config/http/axios')
 
 const service = require('../service/cmekg')
 
-const query = require('../../config/mysql/local')
+const query = require('../../config/database/mysql')
 
 
 // 知识图谱分类

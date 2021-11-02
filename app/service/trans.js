@@ -6,13 +6,13 @@
 
 const md5 = require('md5')
 const axios = require('../../config/http/axios')
-const query = require('../../config/mysql/local')
+const query = require('../../config/database/mysql')
 
 
-const secretConstants=require('../../config/secretConstants.js')
+const constants=require('../../config/constants.js')
 
-const appid = secretConstants.BAIDU_TRANS_API.APPID
-const key = secretConstants.BAIDU_TRANS_API.KEY
+const appid = constants.BAIDU_TRANS_API.APPID
+const key = constants.BAIDU_TRANS_API.KEY
 
 const salt = 'sasq34rtgds'
 const baseURL = 'https://fanyi-api.baidu.com/api/trans/vip/translate'

@@ -5,7 +5,7 @@
  */
 
 
-const query = require('../../config/mysql/local')
+const query = require('../../config/database/mysql')
 
 module.exports = {
     // 添加新的疾病到 icd10_cn 表
